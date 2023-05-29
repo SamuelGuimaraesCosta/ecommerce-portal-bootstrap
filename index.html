@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rara: Ecommerce de Produtos Gerais</title>
+
+  <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body onload="getProductsOnIndexPage()">
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #f9d8dd;">
+    <a class="navbar-brand" href="#"><img src="assets/logo.png" width="70px" height="70px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Início<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Acessar
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Login</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Registro</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Entregamos para todo o Brasil!</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="search.html">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" id="searchProductsInput">
+        <button class="btn my-2 my-sm-0" type="submit" onclick="filterProductsBySearchInput()">Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+  <main>
+    <div class="row">
+      <div class="col ml-2 mt-2">
+        <div class="alert mx-auto alert-success" role="alert">
+          <h4 class="alert-heading">Atenção!</h4>
+          <p>Este trabalho é uma obra de Samuel Guimarães da Costa, aluno de Engenharia de Computação na PUC Coração
+            Eucarístico, matrícula 670157.</p>
+          <hr>
+        </div>
+      </div>
+      <div class="col">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/sl1.jpg" alt="Los Angeles" width="900" height="600">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/sl2.jpg" alt="Chicago" width="900" height="600">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/sl3.jpg" alt="New York" width="900" height="600">
+            </div>
+          </div>
+
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+      </div>
+      <div class="col mr-2 mt-2">
+        <div class="alert mx-auto alert-success" role="alert">
+          <h4 class="alert-heading">Atenção!</h4>
+          <p>Este trabalho é uma obra de Samuel Guimarães da Costa, aluno de Engenharia de Computação na PUC Coração
+            Eucarístico, matrícula 670157.</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck ml-2 mt-2 mb-2">
+      <div class="card">
+        <img class="card-img-top" height="300" id="product1Img">
+        <div class="card-body text-center">
+          <h5 class="card-title" id="product1Title"></h5>
+          <p class="card-text" id="product1Desc"></p>
+          <a href="#" class="card-link btn btn-primary" id="product1Link">Acessar Produto</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="product1Id"></li>
+          <li class="list-group-item" id="product1Price"></li>
+          <li class="list-group-item" id="product1Rating"></li>
+        </ul>
+      </div>
+      <div class="card">
+        <img class="card-img-top" height="300" id="product2Img">
+        <div class="card-body text-center">
+          <h5 class="card-title" id="product2Title"></h5>
+          <p class="card-text" id="product2Desc"></p>
+          <a href="#" class="card-link btn btn-primary" id="product2Link">Acessar Produto</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="product2Id"></li>
+          <li class="list-group-item" id="product2Price"></li>
+          <li class="list-group-item" id="product2Rating"></li>
+        </ul>
+      </div>
+      <div class="card">
+        <img class="card-img-top" height="300" id="product3Img">
+        <div class="card-body text-center">
+          <h5 class="card-title" id="product3Title"></h5>
+          <p class="card-text" id="product3Desc"></p>
+          <a href="#" class="card-link btn btn-primary" id="product3Link">Acessar Produto</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="product3Id"></li>
+          <li class="list-group-item" id="product3Price"></li>
+          <li class="list-group-item" id="product3Rating"></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-deck ml-2 mt-2 mb-2">
+      <div class="card">
+        <img class="card-img-top" height="300" id="product4Img">
+        <div class="card-body text-center">
+          <h5 class="card-title" id="product4Title"></h5>
+          <p class="card-text" id="product4Desc"></p>
+          <a href="#" class="card-link btn btn-primary" id="product4Link">Acessar Produto</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="product4Id"></li>
+          <li class="list-group-item" id="product4Price"></li>
+          <li class="list-group-item" id="product4Rating"></li>
+        </ul>
+      </div>
+      <div class="card">
+        <img class="card-img-top" height="300" id="product5Img">
+        <div class="card-body text-center">
+          <h5 class="card-title" id="product5Title"></h5>
+          <p class="card-text" id="product5Desc"></p>
+          <a href="#" class="card-link btn btn-primary" id="product5Link">Acessar Produto</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="product5Id"></li>
+          <li class="list-group-item" id="product5Price"></li>
+          <li class="list-group-item" id="product5Rating"></li>
+        </ul>
+      </div>
+      <div class="card">
+        <img class="card-img-top" height="300" id="product6Img">
+        <div class="card-body text-center">
+          <h5 class="card-title" id="product6Title"></h5>
+          <p class="card-text" id="product6Desc"></p>
+          <a href="#" class="card-link btn btn-primary" id="product6Link">Acessar Produto</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="product6Id"></li>
+          <li class="list-group-item" id="product6Price"></li>
+          <li class="list-group-item" id="product6Rating"></li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="footer" style="background-color: #f9d8dd;">
+      <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5> Quick links </h5>
+            <ul class="list-unstyled quick-links">
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Home </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> About </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> FAQ </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Get Started </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Videos </a> </li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5> Quick links </h5>
+            <ul class="list-unstyled quick-links">
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Home </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> About </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> FAQ </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Our Services </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Expert Team </a> </li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5> Quick links </h5>
+            <ul class="list-unstyled quick-links">
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Home </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> About </a></li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> FAQ </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Get Started </a> </li>
+              <li> <a href="#"> <i class="fa fa-angle-double-right"> </i> Contact </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+            <ul class="list-unstyled list-inline social text-center">
+              <li class="list-inline-item"> <a href="#"> <i class="fa fa-facebook"> </i> </a> </li>
+              <li class="list-inline-item"> <a href="#"> <i class="fa fa-twitter"> </i> </a> </li>
+              <li class="list-inline-item"> <a href="#"> <i class="fa fa-instagram"> </i> </a> </li>
+              <li class="list-inline-item"> <a href="#"> <i class="fa fa-google-plus"> </i> </a> </li>
+              <li class="list-inline-item"> <a href="#"> <i class="fa fa-envelope"> </i> </a> </li>
+            </ul>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+            <p class="h6"> 2021 ? All right Reversed. <a class="text-green ml-2" href="#" target="_blank"> JavaTpoint
+              </a> </p>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+<script src="index.js"></script>
+
+</html>
